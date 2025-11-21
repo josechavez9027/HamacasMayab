@@ -1,0 +1,1198 @@
+import type { Product } from "../types/product";
+
+// Reseñas de ejemplo
+const sampleReviews = [
+	{
+		id: "r1",
+		userName: "María González",
+		rating: 5,
+		comment:
+			"¡Excelente calidad! La hamaca es muy cómoda y resistente. Los colores son hermosos y vibrantes. Totalmente recomendada para quien busca autenticidad yucateca.",
+		date: "15 de octubre, 2024",
+		verified: true,
+		helpful: 24,
+	},
+	{
+		id: "r2",
+		userName: "Carlos Méndez",
+		rating: 4,
+		comment:
+			"Muy buena hamaca, el tejido es firme y de calidad. Solo le pongo 4 estrellas porque el envío tardó un poco más de lo esperado, pero valió la pena la espera.",
+		date: "3 de octubre, 2024",
+		verified: true,
+		helpful: 12,
+	},
+	{
+		id: "r3",
+		userName: "Ana Rodríguez",
+		rating: 5,
+		comment:
+			"Me encantó! Es mi segunda hamaca de esta tienda. La calidad es consistente y el precio es justo. El servicio al cliente es excelente.",
+		date: "28 de septiembre, 2024",
+		verified: true,
+		helpful: 18,
+	},
+	{
+		id: "r4",
+		userName: "Luis Hernández",
+		rating: 5,
+		comment:
+			"Producto artesanal de primera calidad. Se nota el trabajo manual y la dedicación. Perfecta para mi terraza, muy resistente al uso diario.",
+		date: "20 de septiembre, 2024",
+		verified: false,
+		helpful: 8,
+	},
+	{
+		id: "r5",
+		userName: "Patricia Sánchez",
+		rating: 4,
+		comment:
+			"Buena hamaca, cómoda y bonita. Los colores son tal como se ven en las fotos. Le doy 4 estrellas porque me hubiera gustado más opciones de personalización.",
+		date: "10 de septiembre, 2024",
+		verified: true,
+		helpful: 5,
+	},
+];
+
+export const expandedProducts: Product[] = [
+	{
+		id: "1",
+		name: "Hamaca Clásica Yucateca Roja",
+		description:
+			"Hamaca tejida a mano con técnicas ancestrales mayas. Perfecta para relajarse en el jardín o terraza. Colores vibrantes que no se desvanecen.",
+		basePrice: 1200,
+		category: "clásica",
+		material: "algodón",
+		weightCapacity: "150 kg",
+		weavingTechnique: "Tejido maya tradicional",
+		availability: "en stock",
+		rating: 4.8,
+		reviewsCount: 156,
+		popularity: 95,
+		reviews: sampleReviews,
+		images: [
+			"https://images.unsplash.com/photo-1659619132788-2325bd7f87e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwaGFtbW9jayUyMGNvbG9yZnVsfGVufDF8fHx8MTc1NTc0MjI4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1533918482865-7c58ea707012?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWQlMjBoYW1tb2NrJTIwb3V0ZG9vcnxlbnwxfHx8fDE3NjI3MzIyMTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 300,
+			},
+			{
+				id: "s3",
+				name: "Familiar",
+				dimensions: "3.5m x 2.5m",
+				priceModifier: 600,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Rojo Maya", hex: "#D32F2F", priceModifier: 0 },
+			{ id: "c2", name: "Azul Caribe", hex: "#1976D2", priceModifier: 0 },
+			{ id: "c3", name: "Verde Selva", hex: "#388E3C", priceModifier: 0 },
+			{ id: "c4", name: "Amarillo Sol", hex: "#F57C00", priceModifier: 50 },
+			{ id: "c5", name: "Multicolor", hex: "#E91E63", priceModifier: 100 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Clásico",
+				description: "Tejido tradicional liso",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Rayas",
+				description: "Patrón de rayas coloridas",
+				priceModifier: 150,
+			},
+			{
+				id: "p3",
+				name: "Geométrico Maya",
+				description: "Diseños inspirados en arte maya",
+				priceModifier: 300,
+			},
+		],
+	},
+	{
+		id: "2",
+		name: "Hamaca Moderna Decorativa Blanca",
+		description:
+			"Hamaca con diseño contemporáneo, materiales premium y acabados modernos para máximo confort. Ideal para interiores minimalistas.",
+		basePrice: 1800,
+		category: "decorativa",
+		material: "algodón",
+		weightCapacity: "160 kg",
+		weavingTechnique: "Tejido moderno de alta densidad",
+		availability: "en stock",
+		rating: 4.6,
+		reviewsCount: 89,
+		popularity: 82,
+		images: [
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1678791580150-bd68bb640f96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwYmVhY2glMjB0cm9waWNhbHxlbnwxfHx8fDE3NTU3NDIyODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 400,
+			},
+			{
+				id: "s3",
+				name: "Familiar",
+				dimensions: "3.5m x 2.5m",
+				priceModifier: 800,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Blanco Nube", hex: "#FFFFFF", priceModifier: 0 },
+			{ id: "c2", name: "Gris Moderno", hex: "#757575", priceModifier: 0 },
+			{ id: "c3", name: "Azul Océano", hex: "#0277BD", priceModifier: 100 },
+			{ id: "c4", name: "Verde Menta", hex: "#26A69A", priceModifier: 100 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Minimalista",
+				description: "Diseño limpio y moderno",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Textured",
+				description: "Acabado con textura especial",
+				priceModifier: 200,
+			},
+			{
+				id: "p3",
+				name: "Premium Weave",
+				description: "Tejido premium de alta calidad",
+				priceModifier: 500,
+			},
+		],
+	},
+	{
+		id: "3",
+		name: "Hamaca Premium Artesanal de Lujo",
+		description:
+			"La mejor calidad disponible. Hamaca de lujo tejida por maestros artesanos con materiales premium importados. Acabados de primera.",
+		basePrice: 2800,
+		category: "premium",
+		material: "algodón",
+		weightCapacity: "200 kg",
+		weavingTechnique: "Tejido artesanal de maestros",
+		availability: "en stock",
+		rating: 4.9,
+		reviewsCount: 234,
+		popularity: 98,
+		images: [
+			"https://images.unsplash.com/photo-1634654445767-e551d2e2b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGhhbW1vY2slMjBvdXRkb29yfGVufDF8fHx8MTc2MjczMjIwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1659619132788-2325bd7f87e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwaGFtbW9jayUyMGNvbG9yZnVsfGVufDF8fHx8MTc1NTc0MjI4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 500,
+			},
+			{
+				id: "s3",
+				name: "Familiar",
+				dimensions: "3.5m x 2.5m",
+				priceModifier: 1000,
+			},
+			{
+				id: "s4",
+				name: "Extra Grande",
+				dimensions: "4m x 3m",
+				priceModifier: 1500,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Oro Maya", hex: "#FFD700", priceModifier: 200 },
+			{ id: "c2", name: "Plata Lunar", hex: "#C0C0C0", priceModifier: 150 },
+			{ id: "c3", name: "Rojo Imperial", hex: "#B71C1C", priceModifier: 100 },
+			{ id: "c4", name: "Azul Real", hex: "#1A237E", priceModifier: 100 },
+			{
+				id: "c5",
+				name: "Arcoíris Premium",
+				hex: "#E91E63",
+				priceModifier: 300,
+			},
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Artesanal Clásico",
+				description: "Tejido tradicional de lujo",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Diseño Exclusivo",
+				description: "Patrón único creado por artistas",
+				priceModifier: 400,
+			},
+			{
+				id: "p3",
+				name: "Edición Especial",
+				description: "Diseño limitado con bordados",
+				priceModifier: 800,
+			},
+		],
+	},
+	{
+		id: "4",
+		name: "Hamaca Tropical de Jardín",
+		description:
+			"Perfecta para exteriores, resistente a la intemperie. Colores brillantes que alegran cualquier espacio. Material duradero.",
+		basePrice: 1400,
+		category: "clásica",
+		material: "nylon",
+		weightCapacity: "180 kg",
+		weavingTechnique: "Tejido resistente para exteriores",
+		availability: "en stock",
+		rating: 4.7,
+		reviewsCount: 112,
+		popularity: 88,
+		images: [
+			"https://images.unsplash.com/photo-1760067538559-49b2bfb5f42a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3ZlbiUyMGhhbW1vY2slMjB0cm9waWNhbHxlbnwxfHx8fDE3NjI3MzIyMTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1699190461429-709f72fe9f6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwZ2FyZGVuJTIwcmVsYXh8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 350,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Verde Tropical", hex: "#43A047", priceModifier: 0 },
+			{ id: "c2", name: "Naranja Sunset", hex: "#FF6F00", priceModifier: 0 },
+			{ id: "c3", name: "Turquesa", hex: "#00ACC1", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Color sólido uniforme",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Rayas Tropicales",
+				description: "Rayas multicolores vibrantes",
+				priceModifier: 200,
+			},
+		],
+	},
+	{
+		id: "5",
+		name: "Hamaca Azul Rayada",
+		description:
+			"Diseño clásico de rayas azules y blancas. Estilo marinero perfecto para la playa o piscina. Material que se seca rápido.",
+		basePrice: 1300,
+		category: "clásica",
+		material: "mezcla",
+		weightCapacity: "160 kg",
+		weavingTechnique: "Tejido híbrido resistente",
+		availability: "en stock",
+		rating: 4.5,
+		reviewsCount: 78,
+		popularity: 75,
+		images: [
+			"https://images.unsplash.com/photo-1650267117633-29952531c803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwc3RyaXBlZCUyMGhhbW1vY2t8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 300,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Azul Marino", hex: "#0D47A1", priceModifier: 0 },
+			{ id: "c2", name: "Rojo Náutico", hex: "#C62828", priceModifier: 0 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Rayas Clásicas",
+				description: "Rayas azul y blanco",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Rayas Anchas",
+				description: "Rayas gruesas modernas",
+				priceModifier: 100,
+			},
+		],
+	},
+	{
+		id: "6",
+		name: "Hamaca Decorativa Bohemia",
+		description:
+			"Estilo boho-chic con flecos decorativos. Perfecta para crear un ambiente relajado y artístico. Incluye cojines opcionales.",
+		basePrice: 1950,
+		category: "decorativa",
+		material: "algodón",
+		weightCapacity: "150 kg",
+		weavingTechnique: "Macramé artesanal",
+		availability: "en stock",
+		rating: 4.8,
+		reviewsCount: 145,
+		popularity: 91,
+		images: [
+			"https://images.unsplash.com/photo-1724390684296-10894afcdb5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3ZlbiUyMGhhbW1vY2slMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3NTU3NDIyODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 450,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Beige Natural", hex: "#D7CCC8", priceModifier: 0 },
+			{ id: "c2", name: "Terracota", hex: "#BF360C", priceModifier: 50 },
+			{ id: "c3", name: "Verde Olivo", hex: "#827717", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Flecos Largos",
+				description: "Flecos decorativos de 30cm",
+				priceModifier: 200,
+			},
+			{
+				id: "p2",
+				name: "Macramé Completo",
+				description: "Diseño completo de macramé",
+				priceModifier: 400,
+			},
+		],
+	},
+	{
+		id: "7",
+		name: "Hamaca Premium Doble Extra Ancha",
+		description:
+			"La hamaca más espaciosa de nuestra colección. Ideal para dos personas o para descansar con mucho espacio. Comodidad suprema.",
+		basePrice: 3200,
+		category: "premium",
+		material: "algodón",
+		weightCapacity: "250 kg",
+		weavingTechnique: "Tejido reforzado premium",
+		availability: "bajo pedido",
+		rating: 4.9,
+		reviewsCount: 187,
+		popularity: 93,
+		images: [
+			"https://images.unsplash.com/photo-1699190461429-709f72fe9f6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwZ2FyZGVuJTIwcmVsYXh8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1634654445767-e551d2e2b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGhhbW1vY2slMjBvdXRkb29yfGVufDF8fHx8MTc2MjczMjIwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s3",
+				name: "Familiar",
+				dimensions: "3.5m x 2.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s4",
+				name: "Extra Grande",
+				dimensions: "4m x 3m",
+				priceModifier: 800,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Blanco Puro", hex: "#FAFAFA", priceModifier: 0 },
+			{ id: "c2", name: "Café Chocolate", hex: "#5D4037", priceModifier: 100 },
+			{ id: "c3", name: "Gris Perla", hex: "#90A4AE", priceModifier: 100 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Tejido Denso",
+				description: "Extra acolchado para máximo confort",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Diamante Premium",
+				description: "Patrón exclusivo de rombos",
+				priceModifier: 600,
+			},
+		],
+	},
+	{
+		id: "8",
+		name: "Hamaca Clásica Verde Selva",
+		description:
+			"Inspirada en los colores de la selva maya. Tejido tradicional con hilos de primera calidad. Perfecta para siestas reparadoras.",
+		basePrice: 1250,
+		category: "clásica",
+		material: "algodón",
+		weightCapacity: "150 kg",
+		weavingTechnique: "Tejido maya tradicional",
+		availability: "en stock",
+		rating: 4.6,
+		reviewsCount: 92,
+		popularity: 80,
+		images: [
+			"https://images.unsplash.com/photo-1760067538559-49b2bfb5f42a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3ZlbiUyMGhhbW1vY2slMjB0cm9waWNhbHxlbnwxfHx8fDE3NjI3MzIyMTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1533918482865-7c58ea707012?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWQlMjBoYW1tb2NrJTIwb3V0ZG9vcnxlbnwxfHx8fDE3NjI3MzIyMTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 300,
+			},
+			{
+				id: "s3",
+				name: "Familiar",
+				dimensions: "3.5m x 2.5m",
+				priceModifier: 600,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Verde Esmeralda", hex: "#00695C", priceModifier: 0 },
+			{ id: "c2", name: "Verde Lima", hex: "#7CB342", priceModifier: 0 },
+			{ id: "c3", name: "Verde Oliva", hex: "#689F38", priceModifier: 0 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Color uniforme",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Hojas",
+				description: "Patrón de hojas tropicales",
+				priceModifier: 180,
+			},
+		],
+	},
+	{
+		id: "9",
+		name: "Hamaca Decorativa con Almohada",
+		description:
+			"Incluye almohada cervical ergonómica. Diseño moderno con soporte lumbar integrado. Perfecta para leer o ver películas.",
+		basePrice: 2100,
+		category: "decorativa",
+		material: "mezcla",
+		weightCapacity: "170 kg",
+		weavingTechnique: "Tejido ergonómico especializado",
+		availability: "en stock",
+		rating: 4.7,
+		reviewsCount: 134,
+		popularity: 86,
+		images: [
+			"https://images.unsplash.com/photo-1678791580150-bd68bb640f96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwYmVhY2glMjB0cm9waWNhbHxlbnwxfHx8fDE3NTU3NDIyODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 450,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Azul Cielo", hex: "#29B6F6", priceModifier: 0 },
+			{ id: "c2", name: "Rosa Pastel", hex: "#F48FB1", priceModifier: 50 },
+			{ id: "c3", name: "Lavanda", hex: "#9575CD", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Comfort Plus",
+				description: "Tejido acolchado extra",
+				priceModifier: 300,
+			},
+		],
+	},
+	{
+		id: "10",
+		name: "Hamaca Nylon Resistente Outdoor",
+		description:
+			"Especialmente diseñada para camping y actividades al aire libre. Resistente al agua, UV y hongos. Secado ultra rápido.",
+		basePrice: 1600,
+		category: "clásica",
+		material: "nylon",
+		weightCapacity: "200 kg",
+		weavingTechnique: "Tejido de nylon de paracaídas",
+		availability: "en stock",
+		rating: 4.8,
+		reviewsCount: 201,
+		popularity: 94,
+		images: [
+			"https://images.unsplash.com/photo-1650267117633-29952531c803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwc3RyaXBlZCUyMGhhbW1vY2t8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1699190461429-709f72fe9f6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwZ2FyZGVuJTIwcmVsYXh8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 400,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Negro Carbón", hex: "#212121", priceModifier: 0 },
+			{ id: "c2", name: "Naranja Aventura", hex: "#E65100", priceModifier: 0 },
+			{ id: "c3", name: "Verde Militar", hex: "#558B2F", priceModifier: 0 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Resistente",
+				description: "Tejido ultra fuerte",
+				priceModifier: 0,
+			},
+		],
+	},
+	{
+		id: "11",
+		name: "Hamaca Premium Oro Maya",
+		description:
+			"Edición limitada con hilos metálicos dorados. Inspirada en tesoros mayas. Para clientes que buscan exclusividad y lujo.",
+		basePrice: 3500,
+		category: "premium",
+		material: "algodón",
+		weightCapacity: "180 kg",
+		weavingTechnique: "Tejido artesanal con hilos de oro",
+		availability: "bajo pedido",
+		rating: 5.0,
+		reviewsCount: 45,
+		popularity: 97,
+		images: [
+			"https://images.unsplash.com/photo-1634654445767-e551d2e2b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGhhbW1vY2slMjBvdXRkb29yfGVufDF8fHx8MTc2MjczMjIwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1659619132788-2325bd7f87e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwaGFtbW9jayUyMGNvbG9yZnVsfGVufDF8fHx8MTc1NTc0MjI4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 0,
+			},
+			{
+				id: "s3",
+				name: "Familiar",
+				dimensions: "3.5m x 2.5m",
+				priceModifier: 1200,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Oro Maya", hex: "#FFD700", priceModifier: 0 },
+			{ id: "c2", name: "Oro Rosa", hex: "#E91E63", priceModifier: 200 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Imperial",
+				description: "Patrón maya con hilos dorados",
+				priceModifier: 500,
+			},
+		],
+	},
+	{
+		id: "12",
+		name: "Hamaca Multicolor Fiesta",
+		description:
+			"Celebra la vida con esta hamaca de colores vibrantes. Perfecta para fiestas y reuniones. Alegría garantizada.",
+		basePrice: 1350,
+		category: "clásica",
+		material: "algodón",
+		weightCapacity: "160 kg",
+		weavingTechnique: "Tejido multicolor tradicional",
+		availability: "en stock",
+		rating: 4.7,
+		reviewsCount: 168,
+		popularity: 89,
+		images: [
+			"https://images.unsplash.com/photo-1659619132788-2325bd7f87e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwaGFtbW9jayUyMGNvbG9yZnVsfGVufDF8fHx8MTc1NTc0MjI4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1634654445767-e551d2e2b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGhhbW1vY2slMjBvdXRkb29yfGVufDF8fHx8MTc2MjczMjIwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 320,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Arcoíris", hex: "#FF6B6B", priceModifier: 100 },
+			{ id: "c2", name: "Fiesta Maya", hex: "#FFA500", priceModifier: 100 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Multicolor",
+				description: "Mezcla de todos los colores",
+				priceModifier: 150,
+			},
+		],
+	},
+	{
+		id: "13",
+		name: "Hamaca Decorativa Minimalista Gris",
+		description:
+			"Elegancia en su máxima expresión. Diseño minimalista que combina con cualquier decoración moderna. Sofisticada y discreta.",
+		basePrice: 1900,
+		category: "decorativa",
+		material: "algodón",
+		weightCapacity: "155 kg",
+		weavingTechnique: "Tejido minimalista de alta calidad",
+		availability: "en stock",
+		rating: 4.6,
+		reviewsCount: 97,
+		popularity: 81,
+		images: [
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1724390684296-10894afcdb5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3ZlbiUyMGhhbW1vY2slMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3NTU3NDIyODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 400,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Gris Humo", hex: "#616161", priceModifier: 0 },
+			{ id: "c2", name: "Gris Claro", hex: "#BDBDBD", priceModifier: 0 },
+			{ id: "c3", name: "Carbón", hex: "#424242", priceModifier: 0 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Sin patrones, elegante",
+				priceModifier: 0,
+			},
+		],
+	},
+	{
+		id: "14",
+		name: "Hamaca Clásica Naranja Sunset",
+		description:
+			"Inspirada en los atardeceres de la costa yucateca. Colores cálidos que transmiten paz y tranquilidad. Confort tradicional.",
+		basePrice: 1280,
+		category: "clásica",
+		material: "algodón",
+		weightCapacity: "150 kg",
+		weavingTechnique: "Tejido maya tradicional",
+		availability: "en stock",
+		rating: 4.5,
+		reviewsCount: 103,
+		popularity: 77,
+		images: [
+			"https://images.unsplash.com/photo-1533918482865-7c58ea707012?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxyZWQlMjBoYW1tb2NrJTIwb3V0ZG9vcnxlbnwxfHx8fDE3NjI3MzIyMTF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1760067538559-49b2bfb5f42a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3ZlbiUyMGhhbW1vY2slMjB0cm9waWNhbHxlbnwxfHx8fDE3NjI3MzIyMTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 300,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Naranja Fuego", hex: "#FF5722", priceModifier: 0 },
+			{ id: "c2", name: "Coral", hex: "#FF7043", priceModifier: 0 },
+			{ id: "c3", name: "Durazno", hex: "#FFAB91", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Color uniforme",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Degradado Sunset",
+				description: "Efecto de atardecer",
+				priceModifier: 200,
+			},
+		],
+	},
+	{
+		id: "15",
+		name: "Hamaca Premium con Soporte de Madera",
+		description:
+			"Incluye soporte de madera de pino tratado. No necesitas árboles ni instalación. Lista para usar en cualquier lugar.",
+		basePrice: 4200,
+		category: "premium",
+		material: "algodón",
+		weightCapacity: "180 kg",
+		weavingTechnique: "Tejido premium con soporte incluido",
+		availability: "en stock",
+		rating: 4.8,
+		reviewsCount: 156,
+		popularity: 92,
+		images: [
+			"https://images.unsplash.com/photo-1699190461429-709f72fe9f6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwZ2FyZGVuJTIwcmVsYXh8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1678791580150-bd68bb640f96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwYmVhY2glMjB0cm9waWNhbHxlbnwxfHx8fDE3NTU3NDIyODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 0,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Blanco Natural", hex: "#FAFAFA", priceModifier: 0 },
+			{ id: "c2", name: "Beige Arena", hex: "#D7CCC8", priceModifier: 0 },
+			{ id: "c3", name: "Azul Cielo", hex: "#81D4FA", priceModifier: 100 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Clásico",
+				description: "Tejido tradicional",
+				priceModifier: 0,
+			},
+		],
+	},
+	{
+		id: "16",
+		name: "Hamaca Decorativa Turquesa",
+		description:
+			"Color turquesa intenso que evoca el mar Caribe. Perfecta para espacios tropicales y playeros. Resistente y bella.",
+		basePrice: 1750,
+		category: "decorativa",
+		material: "mezcla",
+		weightCapacity: "165 kg",
+		weavingTechnique: "Tejido resistente al sol",
+		availability: "en stock",
+		rating: 4.7,
+		reviewsCount: 121,
+		popularity: 84,
+		images: [
+			"https://images.unsplash.com/photo-1650267117633-29952531c803?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxibHVlJTIwc3RyaXBlZCUyMGhhbW1vY2t8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 380,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Turquesa Caribe", hex: "#00BCD4", priceModifier: 0 },
+			{ id: "c2", name: "Aqua", hex: "#00E5FF", priceModifier: 50 },
+			{ id: "c3", name: "Teal", hex: "#009688", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Color sólido",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Olas",
+				description: "Patrón de olas marinas",
+				priceModifier: 220,
+			},
+		],
+	},
+	{
+		id: "17",
+		name: "Hamaca Clásica Café Chocolate",
+		description:
+			"Tono tierra natural y cálido. Perfecta para espacios rústicos y naturales. Material orgánico certificado.",
+		basePrice: 1320,
+		category: "clásica",
+		material: "algodón",
+		weightCapacity: "150 kg",
+		weavingTechnique: "Tejido orgánico tradicional",
+		availability: "en stock",
+		rating: 4.6,
+		reviewsCount: 85,
+		popularity: 73,
+		images: [
+			"https://images.unsplash.com/photo-1724390684296-10894afcdb5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3ZlbiUyMGhhbW1vY2slMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3NTU3NDIyODd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1760067538559-49b2bfb5f42a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b3ZlbiUyMGhhbW1vY2slMjB0cm9waWNhbHxlbnwxfHx8fDE3NjI3MzIyMTB8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 310,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Café Oscuro", hex: "#3E2723", priceModifier: 0 },
+			{ id: "c2", name: "Chocolate", hex: "#5D4037", priceModifier: 0 },
+			{ id: "c3", name: "Caramelo", hex: "#8D6E63", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Color uniforme",
+				priceModifier: 0,
+			},
+		],
+	},
+	{
+		id: "18",
+		name: "Hamaca Premium Edición Especial",
+		description:
+			"Diseño exclusivo creado por artistas mayas reconocidos. Numerada y certificada. Solo 100 unidades producidas.",
+		basePrice: 5000,
+		category: "premium",
+		material: "algodón",
+		weightCapacity: "190 kg",
+		weavingTechnique: "Tejido artístico exclusivo",
+		availability: "bajo pedido",
+		rating: 5.0,
+		reviewsCount: 28,
+		popularity: 99,
+		images: [
+			"https://images.unsplash.com/photo-1634654445767-e551d2e2b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGhhbW1vY2slMjBvdXRkb29yfGVufDF8fHx8MTc2MjczMjIwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1659619132788-2325bd7f87e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwaGFtbW9jayUyMGNvbG9yZnVsfGVufDF8fHx8MTc1NTc0MjI4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 0,
+			},
+			{
+				id: "s3",
+				name: "Familiar",
+				dimensions: "3.5m x 2.5m",
+				priceModifier: 1500,
+			},
+		],
+		colors: [
+			{
+				id: "c1",
+				name: "Colección Arte Maya",
+				hex: "#E91E63",
+				priceModifier: 0,
+			},
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Diseño Exclusivo",
+				description: "Pieza única de arte",
+				priceModifier: 1000,
+			},
+		],
+	},
+	{
+		id: "19",
+		name: "Hamaca Decorativa con Red Mosquitera",
+		description:
+			"Incluye red mosquitera integrada. Perfecta para noches al aire libre sin molestias. Sistema de cierre fácil.",
+		basePrice: 2200,
+		category: "decorativa",
+		material: "mezcla",
+		weightCapacity: "160 kg",
+		weavingTechnique: "Tejido con sistema de protección",
+		availability: "en stock",
+		rating: 4.8,
+		reviewsCount: 142,
+		popularity: 87,
+		images: [
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1699190461429-709f72fe9f6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwZ2FyZGVuJTIwcmVsYXh8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 500,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Verde Olivo", hex: "#689F38", priceModifier: 0 },
+			{ id: "c2", name: "Khaki", hex: "#9E9D24", priceModifier: 0 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Con Mosquitera",
+				description: "Incluye red protectora",
+				priceModifier: 300,
+			},
+		],
+	},
+	{
+		id: "20",
+		name: "Hamaca Clásica Púrpura Real",
+		description:
+			"Color púrpura intenso inspirado en la realeza maya. Diseño elegante y llamativo. Para quienes buscan destacar.",
+		basePrice: 1380,
+		category: "clásica",
+		material: "algodón",
+		weightCapacity: "155 kg",
+		weavingTechnique: "Tejido maya tradicional",
+		availability: "en stock",
+		rating: 4.6,
+		reviewsCount: 94,
+		popularity: 79,
+		images: [
+			"https://images.unsplash.com/photo-1659619132788-2325bd7f87e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtZXhpY2FuJTIwaGFtbW9jayUyMGNvbG9yZnVsfGVufDF8fHx8MTc1NTc0MjI4N3ww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1634654445767-e551d2e2b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGhhbW1vY2slMjBvdXRkb29yfGVufDF8fHx8MTc2MjczMjIwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 330,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Púrpura Real", hex: "#6A1B9A", priceModifier: 50 },
+			{ id: "c2", name: "Violeta", hex: "#8E24AA", priceModifier: 50 },
+			{ id: "c3", name: "Lavanda Oscura", hex: "#7B1FA2", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Color uniforme",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Realeza",
+				description: "Patrón con detalles dorados",
+				priceModifier: 250,
+			},
+		],
+	},
+	{
+		id: "21",
+		name: "Hamaca Decorativa Rosa Pastel",
+		description:
+			"Suave tono rosa que crea ambientes relajantes y femeninos. Perfecta para espacios de meditación y yoga.",
+		basePrice: 1850,
+		category: "decorativa",
+		material: "algodón",
+		weightCapacity: "150 kg",
+		weavingTechnique: "Tejido suave y delicado",
+		availability: "en stock",
+		rating: 4.7,
+		reviewsCount: 118,
+		popularity: 83,
+		images: [
+			"https://images.unsplash.com/photo-1678791580150-bd68bb640f96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwYmVhY2glMjB0cm9waWNhbHxlbnwxfHx8fDE3NTU3NDIyODh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1658295885820-ae5cee5f40ed?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMGhhbW1vY2slMjBiZWFjaHxlbnwxfHx8fDE3NjI3MzIyMDl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s1",
+				name: "Individual",
+				dimensions: "2.5m x 1.5m",
+				priceModifier: 0,
+			},
+			{
+				id: "s2",
+				name: "Matrimonial",
+				dimensions: "3m x 2m",
+				priceModifier: 420,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Rosa Pastel", hex: "#F8BBD0", priceModifier: 0 },
+			{ id: "c2", name: "Coral Suave", hex: "#FFAB91", priceModifier: 50 },
+			{ id: "c3", name: "Melocotón", hex: "#FFCCBC", priceModifier: 50 },
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Liso",
+				description: "Color suave uniforme",
+				priceModifier: 0,
+			},
+			{
+				id: "p2",
+				name: "Nube",
+				description: "Patrón de nubes delicadas",
+				priceModifier: 180,
+			},
+		],
+	},
+	{
+		id: "22",
+		name: "Hamaca Premium XXL Familiar",
+		description:
+			"La hamaca más grande disponible. Perfecta para toda la familia. Puede acomodar hasta 4 personas cómodamente.",
+		basePrice: 3800,
+		category: "premium",
+		material: "algodón",
+		weightCapacity: "300 kg",
+		weavingTechnique: "Tejido reforzado para peso máximo",
+		availability: "bajo pedido",
+		rating: 4.9,
+		reviewsCount: 76,
+		popularity: 90,
+		images: [
+			"https://images.unsplash.com/photo-1699190461429-709f72fe9f6f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYW1tb2NrJTIwZ2FyZGVuJTIwcmVsYXh8ZW58MXx8fHwxNzYyNzMyMjEwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+			"https://images.unsplash.com/photo-1634654445767-e551d2e2b8e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2xvcmZ1bCUyMGhhbW1vY2slMjBvdXRkb29yfGVufDF8fHx8MTc2MjczMjIwOXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+		],
+		sizes: [
+			{
+				id: "s4",
+				name: "Extra Grande",
+				dimensions: "4m x 3m",
+				priceModifier: 0,
+			},
+			{
+				id: "s5",
+				name: "XXL Familiar",
+				dimensions: "5m x 3.5m",
+				priceModifier: 1200,
+			},
+		],
+		colors: [
+			{ id: "c1", name: "Blanco Nieve", hex: "#FFFFFF", priceModifier: 0 },
+			{
+				id: "c2",
+				name: "Multicolor Familia",
+				hex: "#FF6B6B",
+				priceModifier: 200,
+			},
+		],
+		patterns: [
+			{
+				id: "p1",
+				name: "Reforzado",
+				description: "Tejido extra fuerte",
+				priceModifier: 0,
+			},
+		],
+	},
+];
